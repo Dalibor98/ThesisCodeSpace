@@ -1,0 +1,37 @@
+﻿@using MTS.Web.Utility
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="container text-center">
+    <div class="row">
+        <div class="col">
+            <h1 class="display-4">Welcome to University Learning Management System</h1>
+            <p>"Education is the most powerful weapon which you can use to change the world." - Nelson Mandela</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/4/45/Mob_Quad_from_Chapel_Tower.jpg" class="img-fluid" alt="University Image" style="width: 50%;" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            @if (User.IsInRole(SD.RoleLeader))
+            {
+                <p>You are a Professor. You currently have admin privileges</p>
+                <p>
+                    <a class="nav-link " asp-controller="Admin" asp-action="Admin">Admin page</a>
+                </p>
+            }
+            else if (User.IsInRole(SD.RoleSidekick))
+            {
+                <p>You have student privileges</p>
+            }
+            else
+            {
+                <p>Login to your university to gain access</p>
+            }
+        </div>
+    </div>
+</div>
